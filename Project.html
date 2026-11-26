@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
     <title>Meet the Creator - Joaquin Galura</title>
     <style>
         * {
@@ -149,6 +151,57 @@
             font-weight: bold;
         }
 
+        .hello {
+            margin-top: 24px;
+            padding: 18px;
+            border: 1px solid #cfdabb;
+            border-left: 5px solid #d97745;
+            border-radius: 8px;
+            background: #dbe4d1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .hello p {
+            margin: 0 0 14px;
+            color: #756f66;
+        }
+
+        .hello-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            min-height: 48px;
+            padding: 10px 12px;
+            border: 1px solid #ddd5c6;
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        input[type="text"] {
+            flex: 1;
+        }
+
+        input[type="button"] {
+            border: 0;
+            color: white;
+            background: #d97745;
+            cursor: pointer;
+            font: bold 16px Arial, Helvetica, sans-serif;
+        }
+
+        input[type="button"]:hover {
+            background: #b85a32;
+        }
+
+        #greeting {
+            min-height: 1.5em;
+            margin: 12px 0 0;
+            color: #b85a32;
+            font-weight: bold;
+        }
+
         footer {
             padding: 17px;
             border-top: 1px solid #ddd5c6;
@@ -179,6 +232,10 @@
 
             .details,
             .works {
+                flex-direction: column;
+            }
+
+            .hello-row {
                 flex-direction: column;
             }
         }
@@ -240,9 +297,20 @@
                 </div>
             </section>
 
+            <section class="hello" aria-labelledby="hello-title">
+                <h2 id="hello-title">Say hello</h2>
+                <p>Enter your name and the page will greet you.</p>
+                <div class="hello-row">
+                    <input type="text" id="visitor_name" placeholder="Your name" aria-label="Your name">
+                    <input type="button" py-click="say_hello" value="Say hello">
+                </div>
+                <p id="greeting" role="status" aria-live="polite"></p>
+            </section>
+
         </main>
 
         <footer>Meet the Creator &mdash; ICT Second Quarter</footer>
     </div>
+    <py-script src="main.py"></py-script>
 </body>
 </html>

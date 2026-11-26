@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>Quarter 2 Seatwork - Basketball Varsity</title>
+    <style>
+        /* Reusable colors so the page palette can be adjusted in one place. */
+        :root {
+            --page: #f1eee8;
+            --panel: #ffffff;
+            --text: #292621;
+            --accent: #d97736;
+        }
+
+        /* Includes padding and borders in each element's set width and height. */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 36px 16px;
+            color: var(--text);
+            background: var(--page);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .card {
+            width: min(100%, 600px);
+            margin: 0 auto;
+            overflow: hidden;
+            border: 1px solid #d5d0c8;
+            border-radius: 8px;
+            background: var(--panel);
+        }
+
+        .site-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            width: min(100%, 600px);
+            margin: 0 auto 14px;
+            padding: 12px;
+            border: 1px solid #d5d0c8;
+            border-radius: 8px;
+            background: var(--panel);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .site-nav a {
+            color: #8c4a20;
+            text-decoration: none;
+        }
+
+        .site-nav a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            padding: 26px 30px;
+            background: #e8a05f;
+        }
+
+        .reactor {
+            display: none;
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: #5a3925;
+            font-size: 14px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            color: #493524;
+        }
+
+        main {
+            padding: 26px 30px 30px;
+        }
+
+        .form-intro {
+            margin: 0 0 20px;
+            color: #625e58;
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+        }
+
+        label {
+            display: grid;
+            gap: 7px;
+            font-size: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            min-height: 42px;
+            padding: 9px 10px;
+            border: 1px solid #bdb8b0;
+            border-radius: 4px;
+            color: var(--text);
+            background: white;
+            font: 16px Arial, Helvetica, sans-serif;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent);
+            outline: 2px solid #d9773633;
+        }
+
+        input[type="button"] {
+            min-height: 42px;
+            margin-top: 4px;
+            border: 1px solid #b75d22;
+            border-radius: 4px;
+            color: white;
+            background: var(--accent);
+            cursor: pointer;
+            font: bold 15px Arial, Helvetica, sans-serif;
+        }
+
+        input[type="button"]:hover {
+            background: #c9682d;
+        }
+
+        input[type="button"]:focus-visible {
+            outline: 2px solid #292621;
+            outline-offset: 2px;
+        }
+
+        #result {
+            min-height: 1.4em;
+            margin-top: 16px;
+            color: #8c4a20;
+            font-weight: bold;
+        }
+
+        /* Reduce side padding on narrow screens so the content has room to fit. */
+        @media (max-width: 480px) {
+            header,
+            main {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav" aria-label="Main navigation">
+        <a href="../Project/index.html">Meet the Creator</a>
+        <a href="../Skills%20Test/index.html">Skills Test</a>
+        <a href="index.html" aria-current="page">SW1</a>
+    </nav>
+
+    <div class="card">
+        <header>
+            <div class="reactor" aria-hidden="true"></div>
+            <p class="eyebrow">Team tryouts</p>
+            <h1>Basketball Varsity</h1>
+            <p>Passion. Teamwork. Game time.</p>
+        </header>
+
+        <main>
+            <p class="form-intro">Check whether your name is on the varsity roster.</p>
+            <form>
+                <label for="first_name">
+                    First name
+                    <input type="text" id="first_name" name="first_name" placeholder="e.g. Alex" autocomplete="given-name">
+                </label>
+                <label for="last_name">
+                    Last name
+                    <input type="text" id="last_name" name="last_name" placeholder="e.g. Reyes" autocomplete="family-name">
+                </label>
+                <!-- PyScript runs candidate_checker from main.py when clicked. -->
+                <input type="button" py-click="candidate_checker" value="Check roster">
+            </form>
+            <!-- Announces the roster result to assistive technology. -->
+            <div id="result" role="status" aria-live="polite"></div>
+        </main>
+    </div>
+    <py-script src="main.py"></py-script>
+</body>
+</html>
